@@ -1,0 +1,21 @@
+﻿@page "/"
+@using HybridAppImageCapture.Service
+<PageTitle>Home</PageTitle>
+
+@inject CameraService cameraService
+
+<button class="btn btn-primary" @onclick="CapturePhoto">Take Photo</button>
+
+@code {
+    async Task CapturePhoto()
+    {
+        try
+        {
+            var photo = await cameraService.CapturePhotoAsync();
+            // handle photo
+        }catch(Exception ex)
+        {
+            Console.WriteLine($"Error {ex.Message}");
+        }
+    }
+}
